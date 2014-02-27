@@ -18,7 +18,7 @@ struct Rainbow
 {
   Pixel operator()(int frame, int index)
   {
-    int phase = (frame + (index * 16)) >> 8;
+    int phase = (frame + (index * 16)) & 0xff;
     return Wheel((uint8_t)phase);
   }  
 };

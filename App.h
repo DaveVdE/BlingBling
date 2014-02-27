@@ -2,6 +2,7 @@
 #include <Adafruit_NeoPixel>
 #include "Pixels.h"
 #include "Rainbow.h"
+#include "Slope.h"
 
 template<class Pipeline>
 struct App
