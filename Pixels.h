@@ -57,7 +57,7 @@ struct Pulsating
     int distance = (frame % 256);
     if (distance > 127) distance = 256 - distance;
     Pixel pixel = pipeline(frame, index);
-    return shiftPixel(pixel, distance);
+    return shiftPixel(pixel, -distance*2);
   }  
 };
 
