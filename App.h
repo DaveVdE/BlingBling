@@ -3,6 +3,7 @@
 #include "Pixels.h"
 #include "Rainbow.h"
 #include "Slope.h"
+#include "Sparkle.h"
 
 template<class Pipeline>
 struct App

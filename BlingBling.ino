@@ -33,8 +33,6 @@ AppType app(strip, rainbow);
 
 
 /*
-*/
-
 Pixel red(255, 0, 0);
 Pixel green(0, 255, 0);
 Pixel blue(0, 0, 255);
@@ -49,6 +47,32 @@ typedef Pulsating<Slope> PulsingSlope;
 PulsingSlope pulse(slope);
 typedef App<PulsingSlope> AppType;
 AppType app(strip, pulse);
+*/
+
+/*
+Pixel red(255, 0, 0);
+Pixel green(0, 255, 0);
+Pixel blue(0, 0, 255);
+Pixel black(0, 0, 0);
+Pixel fire1(95, 50, 0);
+Pixel fire2(32, 10, 0);
+Segment segment1(64, &red, &black);
+Segment segment2(64, &green, &black);
+Segment segment3(64, &blue, &black);
+Segment segment4(64, &black, &fire1);
+Segment segment5(64, &fire1, &fire2);
+Segment empty(64, &black, &black);
+const Segment* segments[] = {&segment4, &segment5, 0};
+Slope slope(segments, 8);
+typedef Pulsating<Slope> PulsingSlope;
+PulsingSlope pulse(slope);
+typedef App<PulsingSlope> AppType;
+AppType app(strip, pulse);
+*/
+
+Sparkle sparkle(64);
+typedef App<Sparkle> AppType;
+AppType app(strip, sparkle);
 
 void setup() {
   // put your setup code here, to run once:

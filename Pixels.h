@@ -41,6 +41,19 @@ Pixel shiftPixel(Pixel pixel, int distance)
     shiftValue(pixel.blue, distance));
 }
 
+uint8_t fadeValue(uint8_t value, uint8_t level)
+{
+  return (uint16_t(value) * uint16_t(level)) >> 8;
+}
+
+Pixel fadePixel(Pixel pixel, uint8_t level)
+{
+  return Pixel(
+    fadeValue(pixel.red, level),
+    fadeValue(pixel.green, level),
+    fadeValue(pixel.blue, level));
+}
+
 // Fades every pixel with the same offset.
 template<class Pipeline>
 struct Pulsating
@@ -54,25 +67,12 @@ struct Pulsating
   
   Pixel operator()(int frame, int index)
   {
-    int distance = (frame % 256);
-    if (distance > 127) distance = 256 - distance;
+    uint8_t level = (frame & 0xff);
+    if (level > 127) level = 255 - level;    
     Pixel pixel = pipeline(frame, index);
-    return shiftPixel(pixel, -distance*2);
+    return fadePixel(pixel, level * 2);
   }  
 };
-
-uint8_t fadeValue(uint8_t value, uint8_t level)
-{
-  return (uint16_t(value) * uint16_t(level)) >> 8;
-}
-
-Pixel fadePixel(Pixel pixel, uint8_t level)
-{
-  return Pixel(
-    fadeValue(pixel.red, level),
-    fadeValue(pixel.green, level),
-    fadeValue(pixel.blue, level));
-}
 
 template<class Pipeline>
 struct Swirl
