@@ -4,9 +4,14 @@
 #include "Rainbow.h"
 #include "Slope.h"
 #include "Sparkle.h"
+#include "Flash.h"
+
+struct IApp {
+  virtual void loop() = 0;
+};
 
 template<class Pipeline>
-struct App
+struct App : IApp
 {
   Pipeline& pipeline;
   Adafruit_NeoPixel& strip;
@@ -16,7 +21,7 @@ struct App
   {
   }
 
-  void loop()
+  virtual void loop()
   {
     for (int index = 0; index < strip.numPixels(); ++index)
     {

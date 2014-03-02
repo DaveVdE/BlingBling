@@ -70,9 +70,17 @@ typedef App<PulsingSlope> AppType;
 AppType app(strip, pulse);
 */
 
+/*
+*/
 Sparkle sparkle(64);
 typedef App<Sparkle> AppType;
 AppType app(strip, sparkle);
+
+/*
+Flash flash(64);
+typedef App<Flash> AppType;
+AppType app(strip, flash);
+*/
 
 void setup() {
   // put your setup code here, to run once:
