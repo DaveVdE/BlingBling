@@ -5,19 +5,20 @@
 #include "Slope.h"
 #include "Sparkle.h"
 #include "Flash.h"
+#include "Nope.h"
 
-struct IApp {
+struct IEffect {
   virtual void loop() = 0;
 };
 
 template<class Pipeline>
-struct App : IApp
+struct Effect : IEffect
 {
   Pipeline& pipeline;
   Adafruit_NeoPixel& strip;
   int frame;
    
-  App(Adafruit_NeoPixel& strip, Pipeline& pipeline) : strip(strip), pipeline(pipeline), frame(0)
+  Effect(Adafruit_NeoPixel& strip, Pipeline& pipeline) : strip(strip), pipeline(pipeline), frame(0)
   {
   }
 
