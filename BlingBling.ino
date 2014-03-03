@@ -8,15 +8,6 @@ Adafruit_NeoPixel strip(pixelCount, 1, NEO_GRB + NEO_KHZ800);
 
 /*
 typedef FixedPixel PixelType;
-PixelType pixel(Pixel(0, 0, 0));
-typedef Pulsating<PixelType> PulsatingType;
-PulsatingType pulsating(pixel);
-typedef App<PulsatingType> AppType;
-AppType app(strip, pulsating);
-*/
-
-/*
-typedef FixedPixel PixelType;
 PixelType pixel(Pixel(127, 0, 0));
 typedef Swirl<PixelType> SwirlType;
 SwirlType swirl(pixel);
@@ -82,14 +73,26 @@ typedef App<Flash> AppType;
 AppType app(strip, flash);
 */
 
+const int buttonPin = 2;
+const int ledPin =  13;      // the number of the LED pin
+
 void setup() {
-  // put your setup code here, to run once:
+  pinMode(buttonPin, INPUT);
+  digitalWrite(buttonPin, HIGH); // Internal pull-up, button connects to ground.
+
   strip.begin();
-  strip.show();
+  strip.show();  
 }
 
 void loop() {  
-  // put your main code here, to run repeatedly: 
   app.loop();
+  
+  int button = digitalRead(buttonPin);
+  
+  if (button == LOW) {
+    delay(1000);
+  }
+  
+  digitalWrite(ledPin, LOW);
   delay(20);
 }
