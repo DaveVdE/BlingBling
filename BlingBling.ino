@@ -59,7 +59,7 @@ void setup() {
   strip.show();  
 }
 
-IEffect* effects[] = {&nopeEffect, &ringEffect, &rainbowEffect, &policeEffect, &sparkleEffect, &fireSlopeEffect, &flashEffect, 0};
+IEffect* effects[] = {&nopeEffect, &rainbowEffect, &policeEffect, &fireSlopeEffect, &ringEffect, &sparkleEffect, &flashEffect, 0};
 IEffect** effectPtr = effects;
 
 void loop() {  
